@@ -13,8 +13,8 @@ import java.sql.SQLException;
 public class UserDaoImpl implements UserDao {
     private ConnectionProvider connectionProvider;
     private Connection connection;
-    private PreparedStatement preparedStatement = null;
-    private ResultSet resultSet = null;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
 
     public UserDaoImpl() {
         connectionProvider = new ConnectionProviderImpl();

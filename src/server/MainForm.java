@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package server;
 
 import java.io.IOException;
@@ -14,128 +13,125 @@ import java.util.Date;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author NguyenDang
- */
 public class MainForm extends javax.swing.JFrame {
-      
+
     SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
     Thread t;
     ServerThread serverThread;
-    /** Chat List  **/
+    /*Chat List*/
     public Vector socketList = new Vector();
     public Vector clientList = new Vector();
-    /** File Sharing List **/
+    
+    /*File Sharing List */
     public Vector clientFileSharingUsername = new Vector();
     public Vector clientFileSharingSocket = new Vector();
-   
 
     // Tạo cấu trúc form MainForm
-     
     public MainForm() {
         initComponents();
     }
-    
-    public void appendMessage(String msg){
+
+    public void appendMessage(String msg) {
         Date date = new Date();
-        jTextArea1.append(sdf.format(date) +": "+ msg +"\n");
+        jTextArea1.append(sdf.format(date) + ": " + msg + "\n");
         jTextArea1.setCaretPosition(jTextArea1.getText().length() - 1);
     }
-    
+
     //(Them)List danh sach cac client
-    public void setSocketList(Socket socket){
+    public void setSocketList(Socket socket) {
         try {
             socketList.add(socket);
             appendMessage("[setSocketList]: Được thêm");
-        } catch (Exception e) { appendMessage("[setSocketList]: "+ e.getMessage()); }
+        } catch (Exception e) {
+            appendMessage("[setSocketList]: " + e.getMessage());
+        }
     }
-    
+
     //(Them)List danh sach ten cua cac client
-    public void setClientList(String client){
+    public void setClientList(String client) {
         try {
             clientList.add(client);
             appendMessage("[setClientList]: Được thêm");
-        } catch (Exception e) { appendMessage("[setClientList]: "+ e.getMessage()); }
+        } catch (Exception e) {
+            appendMessage("[setClientList]: " + e.getMessage());
+        }
     }
-    
+
     //(Them)List danh sach cac ten client duoc gui file
-    public void setClientFileSharingUsername(String user){
+    public void setClientFileSharingUsername(String user) {
         try {
             clientFileSharingUsername.add(user);
-        } catch (Exception e) { }
+        } catch (Exception e) {
+        }
     }
-    
-    
+
     //(Them)List danh sach cac client duoc gui file
-    public void setClientFileSharingSocket(Socket soc){
+    public void setClientFileSharingSocket(Socket soc) {
         try {
             clientFileSharingSocket.add(soc);
-        } catch (Exception e) { }
+        } catch (Exception e) {
+        }
     }
-    
+
     //(Lay ra) List danh sach cac client
-    public Socket getClientList(String client){
+    public Socket getClientList(String client) {
         Socket tsoc = null;
-        for(int x=0; x < clientList.size(); x++){
-            if(clientList.get(x).equals(client)){
+        for (int x = 0; x < clientList.size(); x++) {
+            if (clientList.get(x).equals(client)) {
                 tsoc = (Socket) socketList.get(x);
                 break;
             }
         }
         return tsoc;
     }
-    public void removeFromTheList(String client){
+
+    public void removeFromTheList(String client) {
         try {
-            for(int x=0; x < clientList.size(); x++){
-                if(clientList.elementAt(x).equals(client)){
+            for (int x = 0; x < clientList.size(); x++) {
+                if (clientList.elementAt(x).equals(client)) {
                     clientList.removeElementAt(x);
                     socketList.removeElementAt(x);
-                    appendMessage("[Removed]: "+ client);
+                    appendMessage("[Removed]: " + client);
                     break;
                 }
             }
         } catch (Exception e) {
-            appendMessage("[RemovedException]: "+ e.getMessage());
+            appendMessage("[RemovedException]: " + e.getMessage());
         }
     }
-    
+
     //(Lay ra) List danh sach cac client duoc gui file
-    public Socket getClientFileSharingSocket(String username){
+    public Socket getClientFileSharingSocket(String username) {
         Socket tsoc = null;
-        for(int x=0; x < clientFileSharingUsername.size(); x++){
-            if(clientFileSharingUsername.elementAt(x).equals(username)){
+        for (int x = 0; x < clientFileSharingUsername.size(); x++) {
+            if (clientFileSharingUsername.elementAt(x).equals(username)) {
                 tsoc = (Socket) clientFileSharingSocket.elementAt(x);
                 break;
             }
         }
         return tsoc;
     }
-        public void removeClientFileSharing(String username){
-        for(int x=0; x < clientFileSharingUsername.size(); x++){
-            if(clientFileSharingUsername.elementAt(x).equals(username)){
+
+    public void removeClientFileSharing(String username) {
+        for (int x = 0; x < clientFileSharingUsername.size(); x++) {
+            if (clientFileSharingUsername.elementAt(x).equals(username)) {
                 try {
                     Socket rSock = getClientFileSharingSocket(username);
-                    if(rSock != null){
+                    if (rSock != null) {
                         rSock.close();
                     }
                     clientFileSharingUsername.removeElementAt(x);
                     clientFileSharingSocket.removeElementAt(x);
-                    appendMessage("[FileSharing]: Hủy bỏ "+ username);
+                    appendMessage("[FileSharing]: Hủy bỏ " + username);
                 } catch (IOException e) {
-                    appendMessage("[FileSharing]: "+ e.getMessage());
-                    appendMessage("[FileSharing]: Không thể hủy bỏ "+ username);
+                    appendMessage("[FileSharing]: " + e.getMessage());
+                    appendMessage("[FileSharing]: Không thể hủy bỏ " + username);
                 }
                 break;
             }
         }
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -216,7 +212,6 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         int port = Integer.parseInt(jTextField1.getText());
         serverThread = new ServerThread(port, this);
         t = new Thread(serverThread);
@@ -229,16 +224,12 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
         int confirm = JOptionPane.showConfirmDialog(null, "Đóng Máy Chủ.?");
-        if(confirm == 0){
+        if (confirm == 0) {
             serverThread.stop();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -280,5 +271,4 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-   
 }

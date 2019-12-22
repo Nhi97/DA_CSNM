@@ -14,7 +14,7 @@ public class ConnectionProviderImpl implements ConnectionProvider {
         final String user = "root";
         final String password = "Thanh144";
         // hard code
-        final String url = "jdbc:mysql://localhost:3306/user?useSSL=false&autoReconnect=true";
+        final String url = "jdbc:mysql://localhost:3306/user_chatroom?useSSL=false&autoReconnect=true";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);

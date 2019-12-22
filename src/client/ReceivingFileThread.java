@@ -1,26 +1,13 @@
 package client;
 
-import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.Socket;
-import java.text.DecimalFormat;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
-import javax.swing.ProgressMonitorInputStream;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author NguyenDang
- */
 public class ReceivingFileThread implements Runnable {
 
     protected Socket socket;
@@ -63,9 +50,10 @@ public class ReceivingFileThread implements Runnable {
                             main.setMyTitle("Đang tải File....");
                             System.out.println("Đang tải File....");
                             System.out.println("From: " + consignee);
-                            System.out.println("file name: "  + filename);
+                            System.out.println("file name: " + filename);
                             String path = main.getMyDownloadFolder() + filename;
                             System.out.println("path: " + path);
+
                             /*  Creat Stream   */
                             FileOutputStream fos = new FileOutputStream(path);
                             dis = new DataInputStream(socket.getInputStream());
