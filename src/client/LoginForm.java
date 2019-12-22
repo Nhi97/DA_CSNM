@@ -62,10 +62,10 @@ public class LoginForm extends javax.swing.JFrame {
                     txtPassword.setText("");
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Tài khoản phải tối đa 15 ký tự bao gồm [khoảng trắng].!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, " Account must have maximun 15 characters consist of empty character.!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Chưa hoàn thành Form.!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Not finish form.!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -93,7 +93,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel1.setText("Username :");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setText("Địa chỉ IP :");
+        jLabel2.setText("IP Address :");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Port:");
@@ -164,7 +164,7 @@ public class LoginForm extends javax.swing.JFrame {
                                 .addComponent(jLabel3))
                             .addComponent(jLabel1)
                             .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)

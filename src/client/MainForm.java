@@ -2,6 +2,7 @@ package client;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.DataInputStream;
@@ -11,8 +12,6 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -36,6 +35,8 @@ public class MainForm extends javax.swing.JFrame {
     public MainForm() {
         initComponents();
         initEvents();
+        
+        
     }
 
     public void initFrame(String username, String password, String host, int port) {
@@ -65,7 +66,7 @@ public class MainForm extends javax.swing.JFrame {
                 System.out.println("Dang nhap k dc");
                 isConnected = false;
             } else {
-                appendMessage(" Có thể thực hiện các thao tác chat !!!", "Trạng thái", Color.GREEN, Color.GREEN);
+                appendMessage(" Can chat with each other person !!!", "Status", Color.GREEN, Color.GREEN);
 
                 // Khởi động Client Thread 
                 new Thread(new ClientThread(socket, this)).start();
@@ -76,8 +77,8 @@ public class MainForm extends javax.swing.JFrame {
 
         } catch (IOException e) {
             isConnected = false;
-            JOptionPane.showMessageDialog(this, "Không thể kết nối đến máy chủ, vui lòng thử lại sau.!", "Kết nối thất bại", JOptionPane.ERROR_MESSAGE);
-            appendMessage("[IOException]: " + e.getMessage(), "Lỗi", Color.RED, Color.RED);
+            JOptionPane.showMessageDialog(this, "Cann't connect to server,  Please try again.!", "Connect fail", JOptionPane.ERROR_MESSAGE);
+            appendMessage("[IOException]: " + e.getMessage(), "Error", Color.RED, Color.RED);
         }
     }
 
@@ -95,10 +96,8 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     public void appendImage(String msg, String header, Color headerColor, Color contentColor, String pathImage) {
-        // tpChat.setEditable(true);
-        //getMsgHeader(header, headerColor);
-        System.out.println("LALALALA:" + pathImage);
-        tpChat.insertIcon(new ImageIcon(pathImage));
+        ImageIcon imageIcon = new ImageIcon(pathImage);
+        tpChat.insertIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
         tpChat.repaint();
         tpChat.revalidate();
         //getImage(pathImage);
@@ -255,7 +254,7 @@ public class MainForm extends javax.swing.JFrame {
                         sendFile.setVisible(true);
                         attachmentOpen = true;
                     } else {
-                        JOptionPane.showMessageDialog(sendFileMenu, "Không thể thiết lập Chia sẻ File tại thời điểm này, xin vui lòng thử lại sau.!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(sendFileMenu, "Cann't connect to share file at this time,Please try again.!", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -268,7 +267,7 @@ public class MainForm extends javax.swing.JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                int confirm = JOptionPane.showConfirmDialog(null, "Bạn có chắc đăng xuất không ?");
+                int confirm = JOptionPane.showConfirmDialog(null, "Do you want to log out!!!");
                 if (confirm == 0) {
 
                     try {
@@ -314,7 +313,7 @@ public class MainForm extends javax.swing.JFrame {
                     appendMyMessage(" " + tfChat.getText(), username);
                     tfChat.setText("");
                 } catch (IOException ex) {
-                    appendMessage(" Không thể gửi tin nhắn đi bây giờ, không thể kết nối đến Máy Chủ tại thời điểm này, xin vui lòng thử lại sau hoặc khởi động lại ứng dụng này.!", "Lỗi", Color.RED, Color.RED);
+                    appendMessage(" Cann't send message now, Cann't connect to server at this time, Please try again or Restar.!", "Error", Color.RED, Color.RED);
                 }
             }
         });
@@ -355,6 +354,7 @@ public class MainForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
 
+        tpChat.setContentType("text/html"); // NOI18N
         tpChat.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jScrollPane1.setViewportView(tpChat);
 
@@ -502,7 +502,7 @@ public class MainForm extends javax.swing.JFrame {
             appendMyMessage(" " + evt.getActionCommand(), username);
             tfChat.setText("");
         } catch (IOException e) {
-            appendMessage(" Không thể gửi tin nhắn đi bây giờ, không thể kết nối đến Máy Chủ tại thời điểm này, xin vui lòng thử lại sau hoặc khởi động lại ứng dụng này.!", "Lỗi", Color.RED, Color.RED);
+            appendMessage(" Cann't send message now, Cann't connect to server at this time, Please try again or Restar.!", "Error", Color.RED, Color.RED);
         }
     }//GEN-LAST:event_tfChatActionPerformed
 

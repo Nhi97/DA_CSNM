@@ -99,7 +99,7 @@ public class FormSendFile extends javax.swing.JFrame {
                                 msg = msg + " " + st.nextToken();
                             }
                             form.updateAttachment(false);
-                            JOptionPane.showMessageDialog(FormSendFile.this, msg, "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(FormSendFile.this, msg, "Error", JOptionPane.ERROR_MESSAGE);
                             this.closeMe();
                             break;
 
@@ -115,7 +115,7 @@ public class FormSendFile extends javax.swing.JFrame {
                                 emsg = emsg + " " + st.nextToken();
                             }
                             System.out.println(emsg);
-                            JOptionPane.showMessageDialog(FormSendFile.this, emsg, "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(FormSendFile.this, emsg, "Error", JOptionPane.ERROR_MESSAGE);
                             form.updateAttachment(false);
 //                            form.disableGUI(false);
 //                            form.updateBtn("Gửi File");
@@ -130,7 +130,7 @@ public class FormSendFile extends javax.swing.JFrame {
                                 rMsg = rMsg + " " + st.nextToken();
                             }
                             form.updateAttachment(false);
-                            JOptionPane.showMessageDialog(FormSendFile.this, rMsg, "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(FormSendFile.this, rMsg, "Error", JOptionPane.ERROR_MESSAGE);
                             dispose();
                             break;
                     }
@@ -187,7 +187,7 @@ public class FormSendFile extends javax.swing.JFrame {
                         System.out.println(ex.getMessage());
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Không để trống.!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Not empty.!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
 

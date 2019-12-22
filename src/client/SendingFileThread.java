@@ -1,12 +1,9 @@
 package client;
 
-import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 import javax.swing.JOptionPane;
 
@@ -33,7 +30,7 @@ public class SendingFileThread implements Runnable {
         FileInputStream fileInputStream = null;
         try {
             //form.disableGUI(true);
-            System.out.println("Gửi File..!");
+            System.out.println("Give File..!");
             dos = new DataOutputStream(socket.getOutputStream());
             
             /** Write filename, recipient, username  **/
@@ -43,8 +40,8 @@ public class SendingFileThread implements Runnable {
             
             String filename = file.getName();
             dos.writeUTF("CMD_SENDFILE "+ filename.replace(" ", "_") +" "+ filesize +" "+ receiver +" "+ sender);
-            System.out.println("Từ: "+ sender);
-            System.out.println("Đến: "+ receiver);
+            System.out.println("From: "+ sender);
+            System.out.println("To: "+ receiver);
             
             fileInputStream = new FileInputStream(file);
             while(fileInputStream.read(buffer) >0){
@@ -65,14 +62,14 @@ public class SendingFileThread implements Runnable {
 //                output.write(buffer, 0, buffer.length);
 //            }
             /* Cập nhật AttachmentForm GUI */
-            form.setTitle("File đã được gửi đi.!");
+            form.setTitle("File downloaded.!");
             form.updateAttachment(false); //  Cập nhật Attachment 
-            JOptionPane.showMessageDialog(form, "File đã gửi thành công.!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(form, "File sent successful.!", "Successful", JOptionPane.INFORMATION_MESSAGE);
             form.closeThis();
             /* Đóng gửi file */
             dos.flush();
             fileInputStream.close();
-            System.out.println("File đã được gửi..!");
+            System.out.println("File downloaded..!");
         } catch (IOException e) {
             form.updateAttachment(false); //  Cập nhật Attachment
             System.out.println("[SendFile]: "+ e.getMessage());

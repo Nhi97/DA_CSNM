@@ -46,7 +46,7 @@
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtUsername" pref="290" max="32767" attributes="0"/>
                           <Component id="txtPassword" pref="0" max="32767" attributes="0"/>
@@ -110,7 +110,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a ch&#x1ec9; IP :"/>
+        <Property name="text" type="java.lang.String" value="IP Address :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">

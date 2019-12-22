@@ -153,7 +153,7 @@ public class MainForm extends javax.swing.JFrame {
         jTextField1.setText("4444");
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton1.setText("Khởi động Máy Chủ");
+        jButton1.setText("Start Server");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -161,7 +161,7 @@ public class MainForm extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton2.setText("Dừng Máy Chủ");
+        jButton2.setText("Close Server");
         jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +181,7 @@ public class MainForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
